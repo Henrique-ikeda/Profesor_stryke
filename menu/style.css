@@ -1,0 +1,77 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: black;
+  color: white;
+}
+
+.pixel-border {
+  border: 4px solid white;
+  box-shadow: 0 0 0 4px black;
+}
+
+.bg-pattern {
+  font-family: 'Press Start 2P', cursive;
+  background: url('img/ChatGPT\ Image\ 15\ de\ mai.\ de\ 2025\,\ 10_05_41.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.bg-pattern::before { /* serviu para deixar a iamgem de fundo mais "opaca"*/
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.menu-box, .menu-title, #main-menu {/* complemento para deixar a tela mais "opaca"*/
+  position: relative;
+  z-index: 1;
+}
+
+.menu-box {
+  background: rgba(85, 77, 39, 0.85);
+  border-radius: 16px;
+  padding: 24px 8px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.7);
+  border: 4px solid #fff;
+  max-width: 95vw;
+  margin: 0 auto;
+}
+
+.menu-item:hover {
+  background-color: #facc15; /* amarelo */
+  color: black;
+  cursor: pointer;
+}
+
+.menu-title {
+  text-shadow: 2px 2px 0 #000;
+}
+
+.logo-jogo {
+  width: 320px;      /* ajuste o valor conforme desejar */
+  max-width: 90vw;   /* garante responsividade */
+  height: auto;
+  display: block;
+  margin: 16px auto 16px auto;
+}
+
+@media (max-width: 500px) {
+  .logo-jogo {
+    width: 180px;
+    margin-bottom: 8px;
+  }
+  .menu-box {
+    padding: 12px 2vw;
+    max-width: 99vw;
+  }
+}
+
