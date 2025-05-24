@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jogo Retrô</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonte Retrô -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center bg-pattern">
+
+  <!-- Título -->
+  <img src="img/Logo do Professor Stryke.png" class="logo-jogo">
+
+<div class="menu-box">
+  <!-- Menu -->
+  <ul id="main-menu" class="space-y-4 w-full">
+    <li data-action="play" class="menu-item p-4 bg-gray-800 pixel-border text-center rounded">JOGAR</li>
+    <li>
+      <a href="creditos.html" class="menu-item p-4 bg-gray-800 pixel-border text-center rounded block">CRÉDITOS</a>
+    </li>
+  </ul>
+</div>
+
+  <!-- Script -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>

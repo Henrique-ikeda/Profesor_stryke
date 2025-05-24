@@ -2,6 +2,8 @@ body {
   font-family: 'Press Start 2P', cursive;
   background: black;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .pixel-border {
@@ -16,10 +18,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: white;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
 }
 
 .bg-pattern::before { /* serviu para deixar a iamgem de fundo mais "opaca"*/
@@ -31,25 +30,44 @@ body {
   pointer-events: none;
 }
 
+.menu-item{
+  font-size: 1.3rem;
+  padding: 1.5rem 0;
+  width: 100%!important ;                /* faz o botão ocupar toda a largura */
+  box-sizing: border-box;     /* garante que o padding não ultrapasse a largura */
+  display: block;             /* faz o li se comportar como um botão/bloco */
+  text-align: center;
+  background: #27272a;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  color: white;
+  cursor: pointer;
+}
 .menu-box, .menu-title, #main-menu {/* complemento para deixar a tela mais "opaca"*/
   position: relative;
   z-index: 1;
 }
 
+#main-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .menu-box {
   background: rgba(85, 77, 39, 0.85);
   border-radius: 16px;
-  padding: 24px 8px;
+  padding: 40px 24px;         /* aumente o padding para deixar o menu maior */
   box-shadow: 0 8px 32px 0 rgba(0,0,0,0.7);
   border: 4px solid #fff;
-  max-width: 95vw;
+  max-width: 600px;           /* aumente o max-width para deixar o menu mais largo */
+  width: 100%;                /* garante que ocupe toda a largura possível */
   margin: 0 auto;
 }
 
 .menu-item:hover {
   background-color: #facc15; /* amarelo */
   color: black;
-  cursor: pointer;
 }
 
 .menu-title {

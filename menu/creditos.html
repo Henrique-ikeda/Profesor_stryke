@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <title>Perfis</title>
+  <style>
+    h1 {
+      font-size: 5rem;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: monospace;
+      background: #9e7640;
+      color: white;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    .section {
+      height: 100vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: row;
+      scroll-snap-align: start;
+    }
+
+    .section.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .info,
+    .image {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      min-height: 0;
+      padding: 0;
+      /* Remove padding para não causar overflow */
+    }
+
+    .image {
+      overflow: hidden;
+    }
+
+    .image img {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+      display: block;
+    }
+
+    a {
+      color: #451d08;
+      text-decoration: none;
+    }
+
+    /* Aspecto 2D para o h1 */
+    .info h1 span {
+      font-family: 'Press Start 2P', monospace, cursive;
+      font-size: 2.5rem;
+      color: #9e3712;
+      text-shadow:
+        2px 2px 0 #000,
+        4px 4px 0 #333,
+        0 0 8px #000;
+      white-space: pre-line;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      text-align: center;
+      display: block;
+    }
+
+    .btn-voltar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1000;
+      font-family: 'Press Start 2P', monospace, cursive;
+      font-size: 1.4rem;
+      padding: 20px 44px;
+      background: #202834;
+      color: #fff;
+      border: 3px solid #fff;
+      border-radius: 14px;
+      box-shadow: 2px 2px 0 #000, 4px 4px 0 #333;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-shadow: 2px 2px 0 #000;
+      outline: none;
+    }
+
+    .btn-voltar:hover {
+      background: #facc15;
+      color: #222;
+      text-shadow: none;
+    }
+
+    .btn-social {
+      display: inline-block;
+      font-family: 'Press Start 2P', monospace, cursive;
+      font-size: 1.2rem;
+      padding: 16px 36px;
+      margin: 16px 0 0 0;
+      background: #202834;
+      color: #fff;
+      border: 3px solid #fff;
+      border-radius: 14px;
+      box-shadow: 2px 2px 0 #000, 4px 4px 0 #333;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+      text-shadow: 2px 2px 0 #000;
+      text-decoration: none;
+      width: 240px;
+      max-width: 100%;
+    }
+
+    .btn-social:hover {
+      background: #facc15;
+      color: #222;
+      text-shadow: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="btn-voltar" onclick="window.history.back()">VOLTAR</button>
+  <!-- ...restante do código... -->
+  <div class="section">
+    <div class="info">
+      <h1><span id="title1"></span></h1>
+      <a href="https://github.com/Henrique-Ikeda" target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/henrique-ikeda-/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/minha ft.jpg" alt="Henrique Ikeda" />
+    </div>
+  </div>
+
+  <div class="section reverse">
+    <div class="info">
+      <h1><span id="title2"></span></h1>
+      <a href="https://github.com/BrenoNosima" target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/brenonosima/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/breno.jpeg" alt="Breno" />
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="info">
+      <h1><span id="title3"></span></h1>
+      <a href="https://github.com/FGaleti"
+          target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/felipe-galeti-g%C3%B4ngora-023b37301/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/felipe_cabeçudo.jpeg" alt="Felipe" />
+    </div>
+  </div>
+
+  <div class="section reverse">
+    <div class="info">
+      <h1><span id="title4"></span></h1>
+      <a href="https://github.com/CaduCarfi" target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/carlos-eduardo-carfi-1994032ab/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/cadu.jpg" alt="Carlos" />
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="info">
+      <h1><span id="title5"></span></h1>
+      <a href="https://github.com/H4ttiz" target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/leonardo-bezerra-da-silva-2507a92bb/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/leo.jpeg" alt="Leo" />
+    </div>
+  </div>
+
+  <div class="section reverse">
+    <div class="info">
+      <h1><span id="title6"></span></h1>
+      <a href="https://github.com/ThiagoCHAPECO" target="_blank" class="btn-social">GitHub</a>
+      <a href="https://www.linkedin.com/in/thiago-gimenes-090b352ab/" target="_blank" class="btn-social">LinkedIn</a>
+    </div>
+    <div class="image">
+      <img src="img/thiago.jpg" alt="Thiago" />
+    </div>
+  </div>
+
+  <script>
+    const typewriter = (elementId, text, delay = 75) => {
+      let i = 0;
+      const target = document.getElementById(elementId);
+      if (!target || target.dataset.typed === "true") return;
+      target.dataset.typed = "true";
+      target.textContent = "";
+      const type = () => {
+        if (i < text.length) {
+          target.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, delay);
+        }
+      };
+      type();
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const names = [
+        "Henrique\nIkeda",
+        "Breno\nNosima",
+        "Felipe\nGaleti",
+        "Calos\nEduardo",
+        "Leonardo\nZica",
+        "Thiago\nChapecó"
+      ];
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(document.querySelectorAll('.section')).indexOf(entry.target);
+            if (idx !== -1) {
+              typewriter(`title${idx + 1}`, names[idx]);
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.section').forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+
+</html>
