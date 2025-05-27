@@ -1,35 +1,277 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jogo Retrô</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogo Retrô</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonte Retrô -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Fonte Retrô -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="style.css">
+
 </head>
+
+<style>
+    body {
+        font-family: 'Press Start 2P', cursive;
+        background: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .pixel-border {
+        border: 4px solid white;
+        box-shadow: 0 0 0 4px black;
+    }
+
+    .bg-pattern {
+        font-family: 'Press Start 2P', cursive;
+        background: url('img/ChatGPT\ Image\ 15\ de\ mai.\ de\ 2025\,\ 10_05_41.png') no-repeat center center fixed;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+
+    .bg-pattern::before {
+        /* serviu para deixar a iamgem de fundo mais "opaca"*/
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .menu-item {
+        font-size: 1.3rem;
+        padding: 1.5rem 0;
+        width: 100% !important;
+        /* faz o botão ocupar toda a largura */
+        box-sizing: border-box;
+        /* garante que o padding não ultrapasse a largura */
+        display: block;
+        /* faz o li se comportar como um botão/bloco */
+        text-align: center;
+        background: #27272a;
+        border-radius: 8px;
+        transition: background 0.2s, color 0.2s;
+        color: white;
+        cursor: pointer;
+    }
+
+    .menu-box,
+    .menu-title,
+    #main-menu {
+        /* complemento para deixar a tela mais "opaca"*/
+        position: relative;
+        z-index: 1;
+    }
+
+    #main-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .menu-box {
+        background: rgba(85, 77, 39, 0.85);
+        border-radius: 16px;
+        padding: 40px 24px;
+        /* aumente o padding para deixar o menu maior */
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
+        border: 4px solid #fff;
+        max-width: 600px;
+        /* aumente o max-width para deixar o menu mais largo */
+        width: 100%;
+        /* garante que ocupe toda a largura possível */
+        margin: 0 auto;
+    }
+
+    .menu-item:hover {
+        background-color: #facc15;
+        /* amarelo */
+        color: black;
+    }
+
+    .menu-title {
+        text-shadow: 2px 2px 0 #000;
+    }
+
+    .logo-jogo {
+        width: 320px;
+        /* ajuste o valor conforme desejar */
+        max-width: 90vw;
+        /* garante responsividade */
+        height: auto;
+        display: block;
+        margin: 16px auto 16px auto;
+    }
+
+    @media (max-width: 500px) {
+        .logo-jogo {
+            width: 180px;
+            margin-bottom: 8px;
+        }
+
+        .menu-box {
+            padding: 12px 2vw;
+            max-width: 99vw;
+        }
+    }
+
+    /* Estilos para o carregando */
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .loader {
+        border: 8px solid rgba(255, 255, 255, 0.3);
+        border-top: 8px solid #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Estilos para a barra de carregamento */
+    #loading-bar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .loading-bar-container {
+        width: 340px;
+        max-width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        margin: 0 auto;
+    }
+
+    .loading-bar-bg {
+        width: 100%;
+        height: 22px;
+        background: #444;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .loading-bar-fill {
+        height: 100%;
+        width: 0%; /* começa vazia*/
+        background: linear-gradient(90deg, #a1753a 60%, #facc15 100%);
+        border-radius: 12px;
+        transition: width 2s linear;  /*  suaviza a mudança de largura*/
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .loading-text {
+        font-family: 'Press Start 2P', cursive;
+        color: #fff;
+        font-size: 1rem;
+        text-align: center;
+        margin: 0;
+    }
+</style>
+
 <body class="min-h-screen flex flex-col items-center justify-center bg-pattern">
 
-  <!-- Título -->
-  <img src="img/Logo do Professor Stryke.png" class="logo-jogo">
+    <!-- Título -->
+    <img src="img/Logo do Professor Stryke.png" class="logo-jogo">
 
-<div class="menu-box">
-  <!-- Menu -->
-  <ul id="main-menu" class="space-y-4 w-full">
-    <li data-action="play" class="menu-item p-4 bg-gray-800 pixel-border text-center rounded">JOGAR</li>
-    <li>
-      <a href="creditos.html" class="menu-item p-4 bg-gray-800 pixel-border text-center rounded block">CRÉDITOS</a>
-    </li>
-  </ul>
-</div>
+    <div class="menu-box" id="menu-box">
+        <!-- Menu -->
+        <ul id="main-menu" class="space-y-4 w-full">
+            <li data-action="play" class="menu-item p-4 bg-gray-800 pixel-border text-center rounded">JOGAR</li>
+            <li>
+                <a href="creditos.html"
+                    class="menu-item p-4 bg-gray-800 pixel-border text-center rounded block">CRÉDITOS</a>
+            </li>
+        </ul>
+    </div>
 
-  <!-- Script -->
-  <script src="js/script.js" defer></script>
+    <!-- Barra de carregamento (fica oculta até clicar em JOGAR) -->
+    <div class="menu-box" id="loading-bar-area" style="display:none;">
+        <div class="loading-bar-container">
+            <div class="loading-bar-bg">
+                <div class="loading-bar-fill" id="loading-bar-fill"></div>
+            </div>
+            <p class="loading-text">Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script defer>
+        const menuBox = document.getElementById('menu-box');
+        const loadingBarArea = document.getElementById('loading-bar-area');
+        const loadingBarFill = document.getElementById('loading-bar-fill');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const action = item.dataset.action;
+
+                if (action === 'play') {
+                    // Esconde o menu
+                    menuBox.style.display = 'none';
+                    // Mostra a barra de carregamento
+                    loadingBarArea.style.display = 'block';
+                    // Anima a barra
+                    setTimeout(() => {
+                        loadingBarFill.style.width = '100%';  //faz a barra crescer até o fim
+                    }, 50);
+
+                    // Redireciona após o carregamento
+                    setTimeout(() => {
+                        window.location.href = 'https://www.youtube.com/';
+                    }, 2100);
+                    return;
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
